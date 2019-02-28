@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Timer from './components/Timer';
+import TimerCtrlPanel from './components/TimerCtrlPanel';
 import './App.css';
 
 class App extends Component {
@@ -14,13 +15,20 @@ class App extends Component {
         seconds: 13,
       },
       clockType: 'session',
-      paused: false
+      paused: false,
+      intervalID: null
 
     }
   }
 
   componentDidMount = () => {
-    this.tickTock();
+      this.tickTock();
+  }
+
+  componentWillUnmount = () => {
+    if(this.state.paused) {
+
+    }
   }
 
   countDown = () => {
@@ -32,7 +40,6 @@ class App extends Component {
           minutes
         }
       })
-      console.log(this.state.timeRemains);
     }
     else if (seconds === 0 && minutes > 0) {
       this.setState({
@@ -65,7 +72,25 @@ class App extends Component {
   }
 
   tickTock = () => {
-    setInterval(this.countDown, 1000)
+    let intervalID = setInterval(this.countDown, 1000);
+    this.setState({
+      intervalID: intervalID
+    })
+
+  }
+
+  pauseTimer = () => {
+    this.setState({
+      paused: true
+    })
+    clearInterval(this.state.intervalID)
+  }
+
+  startTimer = () => {
+    this.setState({
+      paused: false
+    })
+    this.tickTock()
   }
 
 
@@ -77,7 +102,11 @@ class App extends Component {
         {/* <SessionLengthCtrl />
         <BreakLengthCtrl /> */}
         <Timer minutes={ minutes } seconds={ seconds } sessionType={ this.state.clockType }  />
-        {/* <TimerCtrlPanel /> */}
+        <TimerCtrlPanel 
+            paused={ this.state.paused } 
+            pauseTimer={ this.pauseTimer } 
+            startTimer={ this.startTimer } 
+        />
       </div>
     );
   }

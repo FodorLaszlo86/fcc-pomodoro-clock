@@ -94,22 +94,56 @@ class App extends Component {
     this.tickTock()
   }
 
+  incrementTime = (event) => {
+    if (this.state.paused) {
+      if(event.target.id === 'increment-session' && this.state.sessionLength < 60) {
+        this.setState({
+          sessionLength: this.state.sessionLength + 1
+        })
+      }
+      else if (event.target.id === 'increment-break' && this.state.breakLength < 60)
+      this.setState({
+        breakLength: this.state.breakLength + 1
+      })
+    }
+  }
+
+  decrementTime = (event) => {
+    if (this.state.paused) {
+      if(event.target.id === 'decrement-session' && this.state.sessionLength > 1) {
+        this.setState({
+          sessionLength: this.state.sessionLength - 1
+        })
+      }
+      else if (event.target.id === 'decrement-break' && this.state.breakLength > 1)
+      this.setState({
+        breakLength: this.state.breakLength - 1
+      })
+    }
+  }
+
 
 
   render() {
     const { minutes, seconds } = this.state.timeRemains
+    const { breakLength, sessionLength, paused, clockType } = this.state;
     return (
       <div className="App">
-        <DurationControls />
-        
+        <DurationControls 
+            breakDuration={ breakLength } 
+            sessionDuration={ sessionLength }
+            incrementTime={ this.incrementTime } 
+            decrementTime={ this.decrementTime }
+        />
+
         <Timer 
             minutes={ minutes } 
             seconds={ seconds } 
-            sessionType={ this.state.clockType }  
+            sessionType={ clockType }  
         />
 
         <TimerCtrlPanel 
-            paused={ this.state.paused } 
+            paused={ paused } 
             pauseTimer={ this.pauseTimer } 
             startTimer={ this.startTimer } 
         />

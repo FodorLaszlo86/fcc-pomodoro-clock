@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Timer from './components/Timer';
 import TimerCtrlPanel from './components/TimerCtrlPanel';
+import DurationControls from './components/DurationControls';
 import './App.css';
 
 class App extends Component {
@@ -8,31 +9,31 @@ class App extends Component {
     super(props);
 
     this.state = {
-      breakLength: 1,
-      sessionLength: 2,
+      breakLength: 5,
+      sessionLength: 25,
       timeRemains: {
-        minutes: 1,
-        seconds: 13,
+        minutes: 25,
+        seconds: 0,
       },
       clockType: 'session',
-      paused: false,
+      paused: true,
       intervalID: null
-
     }
   }
 
   componentDidMount = () => {
-      this.tickTock();
-  }
-
-  componentWillUnmount = () => {
+    // controls stop-pause of the timer
     if(this.state.paused) {
-
+      clearInterval(this.state.intervalID);
+    } else {
+      this.tickTock();
     }
   }
 
+
   countDown = () => {
     const { minutes, seconds } = this.state.timeRemains;
+    const { clockType } = this.state;
     if(seconds > 0) {
       this.setState({
         timeRemains: {
@@ -51,7 +52,7 @@ class App extends Component {
     }
 
     else if (seconds === 0 && minutes === 0) {
-      if (this.state.clockType === 'session') {
+      if (clockType === 'session') {
         this.setState({
           clockType: 'break',
           timeRemains: {
@@ -99,9 +100,14 @@ class App extends Component {
     const { minutes, seconds } = this.state.timeRemains
     return (
       <div className="App">
-        {/* <SessionLengthCtrl />
-        <BreakLengthCtrl /> */}
-        <Timer minutes={ minutes } seconds={ seconds } sessionType={ this.state.clockType }  />
+        <DurationControls />
+        
+        <Timer 
+            minutes={ minutes } 
+            seconds={ seconds } 
+            sessionType={ this.state.clockType }  
+        />
+
         <TimerCtrlPanel 
             paused={ this.state.paused } 
             pauseTimer={ this.pauseTimer } 

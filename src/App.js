@@ -94,17 +94,58 @@ class App extends Component {
     this.tickTock()
   }
 
+  adjustClockSession = (changeType) => {
+    if(changeType === 'increment-session') {
+      this.setState({
+        timeRemains: {
+          minutes: this.state.sessionLength + 1,
+          seconds: 0
+        }
+      })
+    } 
+    else if (changeType === 'decrement-session') {
+      this.setState({
+        timeRemains: {
+          minutes: this.state.sessionLength - 1,
+          seconds: 0
+        }
+      })
+    }
+  }
+
+  adjustClockBreak = (changeType) => {
+    if(changeType === 'increment-break') {
+      this.setState({
+        timeRemains: {
+          minutes: this.state.breakLength + 1,
+          seconds: 0
+        }
+      })
+    } 
+    else if (changeType === 'decrement-break') {
+      this.setState({
+        timeRemains: {
+          minutes: this.state.breakLength - 1,
+          seconds: 0
+        }
+      })
+    }
+  }
+
   incrementTime = (event) => {
     if (this.state.paused) {
+      console.log(event.target.id)
       if(event.target.id === 'increment-session' && this.state.sessionLength < 60) {
         this.setState({
-          sessionLength: this.state.sessionLength + 1
+          sessionLength: this.state.sessionLength + 1,
         })
+        this.adjustClockSession(event.target.id);
       }
       else if (event.target.id === 'increment-break' && this.state.breakLength < 60)
       this.setState({
         breakLength: this.state.breakLength + 1
       })
+      this.adjustClockBreak(event.target.id);
     }
   }
 
@@ -112,16 +153,31 @@ class App extends Component {
     if (this.state.paused) {
       if(event.target.id === 'decrement-session' && this.state.sessionLength > 1) {
         this.setState({
-          sessionLength: this.state.sessionLength - 1
+          sessionLength: this.state.sessionLength - 1,
         })
+        this.adjustClockSession(event.target.id);
       }
       else if (event.target.id === 'decrement-break' && this.state.breakLength > 1)
       this.setState({
         breakLength: this.state.breakLength - 1
       })
+      this.adjustClockBreak(event.target.id);
     }
   }
 
+  resetClockDefault = () => {
+    this.setState({
+      sessionLength: 25,
+      breakLength: 5,
+      timeRemains: {
+        minutes: 25,
+        seconds: 0
+      },
+      clockType: 'session',
+      paused: true,
+      intervalID: null
+    })
+  }
 
 
   render() {
@@ -146,6 +202,7 @@ class App extends Component {
             paused={ paused } 
             pauseTimer={ this.pauseTimer } 
             startTimer={ this.startTimer } 
+            reset={ this.resetClockDefault }
         />
       </div>
     );

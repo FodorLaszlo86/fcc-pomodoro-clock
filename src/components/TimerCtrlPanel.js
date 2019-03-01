@@ -1,13 +1,13 @@
 import React from 'react';
 
-const TimerCtrlPanel = ({ paused, pauseTimer, startTimer }) => {
+const TimerCtrlPanel = ({ paused, pauseTimer, startTimer, reset }) => {
     if(paused) {
         return (
             <div>
                  <button onClick={ startTimer }>
                     <i className="material-icons">play_arrow</i>
                 </button>
-                <button>
+                <button onClick={ reset } >
                     <i className="material-icons">repeat</i>
                 </button>
             </div>
@@ -18,7 +18,7 @@ const TimerCtrlPanel = ({ paused, pauseTimer, startTimer }) => {
                  <button onClick={ pauseTimer }>
                     <i className="material-icons">pause</i>
                 </button>
-                <button>
+                <button onClick={ reset }>
                     <i className="material-icons">repeat</i>
                 </button>
             </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 
-const TimerCtrlPanel = ({ timerCtrl, reset }) => {
+const TimerCtrlPanel = ({ timerCtrl, reset, paused }) => {
+    
     return (
         <div>
              <button id='start_stop' onClick={ timerCtrl }>

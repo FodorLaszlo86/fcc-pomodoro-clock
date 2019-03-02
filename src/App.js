@@ -3,7 +3,9 @@ import Timer from './components/Timer';
 import TimerCtrlPanel from './components/TimerCtrlPanel';
 import DurationControls from './components/DurationControls';
 import Beep from './components/Beep';
-import './App.css';
+import PomodoroHeader from './components/PomodoroHeader';
+import PomodoroFooter from './components/PomodoroFooter';
+
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +34,7 @@ class App extends Component {
   }
 
 
+  // Manages countdown timing, time value decrements minutes and seconds
   countDown = () => {
     const { minutes, seconds } = this.state.timeRemains;
     const { clockType } = this.state;
@@ -74,6 +77,8 @@ class App extends Component {
     }
   }
 
+
+  // drives countdown,  clock update every 1000ms
   tickTock = () => {
     let intervalID = setInterval(this.countDown, 1000);
     this.setState({
@@ -82,13 +87,8 @@ class App extends Component {
 
   }
 
-  // pauseTimer = () => {
-  //   this.setState({
-  //     paused: true
-  //   })
-  //   clearInterval(this.state.intervalID)
-  // }
 
+  // start-stop timer countDown
   startPauseTimer = () => {
     if(this.state.paused) {
       this.setState({
@@ -103,7 +103,7 @@ class App extends Component {
     }
   }
 
-  adjustClockSession = (changeType) => {
+  adjustClockSession = changeType => {
     if(changeType === 'session-increment') {
       this.setState({
         timeRemains: {
@@ -122,7 +122,7 @@ class App extends Component {
     }
   }
 
-  adjustClockBreak = (changeType) => {
+  adjustClockBreak = changeType => {
     if(changeType === 'break-increment' && this.state.timeRemains.minutes < 60) {
       this.setState({
         timeRemains: {
@@ -143,13 +143,14 @@ class App extends Component {
 
   incrementTime = (event) => {
     if (this.state.paused) {
-      console.log(event.target.id)
+      // increase session duration, ensures time does not go under 1 minute
       if(event.target.id === 'session-increment' && this.state.sessionLength < 60) {
         this.setState({
           sessionLength: this.state.sessionLength + 1,
         })
         this.adjustClockSession(event.target.id);
       }
+      // increase break duration, ensures time does not go under 1 minute
       else if (event.target.id === 'break-increment' && this.state.breakLength < 60)
       this.setState({
         breakLength: this.state.breakLength + 1
@@ -160,12 +161,14 @@ class App extends Component {
 
   decrementTime = (event) => {
     if (this.state.paused) {
+      // decrease session duration, ensures time does not go under 1 minute
       if(event.target.id === 'session-decrement' && this.state.sessionLength > 1) {
         this.setState({
           sessionLength: this.state.sessionLength - 1,
         })
         this.adjustClockSession(event.target.id);
       }
+      // decrease break duration, ensures time does not go under 1 minute
       else if (event.target.id === 'break-decrement' && this.state.breakLength > 1)
       this.setState({
         breakLength: this.state.breakLength - 1
@@ -176,10 +179,13 @@ class App extends Component {
 
   resetClockDefault = () => {
     const alarm = document.querySelector('#beep');
+    // stop interval when reset pressed
     clearInterval(this.state.intervalID);
+    // stop and rewind Alarm sound when reset pressed
     alarm.pause();
     alarm.currentTime = 0;
 
+    // reset state to default
     this.setState({
       sessionLength: 25,
       breakLength: 5,
@@ -195,7 +201,6 @@ class App extends Component {
 
   playBeep = () => {
     const beepSound = document.querySelector('#beep');
-    console.log(beepSound);
     beepSound.play();
   }
 
@@ -205,6 +210,8 @@ class App extends Component {
     const { breakLength, sessionLength, clockType, paused } = this.state;
     return (
       <div className="App">
+
+        <PomodoroHeader />
         <DurationControls 
             breakDuration={ breakLength } 
             sessionDuration={ sessionLength }
@@ -223,7 +230,9 @@ class App extends Component {
             reset={ this.resetClockDefault }
             paused={ paused }
         />
+
         <Beep />
+        <PomodoroFooter />
       </div>
     );
   }

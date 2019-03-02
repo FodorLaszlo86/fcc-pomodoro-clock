@@ -202,7 +202,7 @@ class App extends Component {
 
   render() {
     const { minutes, seconds } = this.state.timeRemains
-    const { breakLength, sessionLength, clockType } = this.state;
+    const { breakLength, sessionLength, clockType, paused } = this.state;
     return (
       <div className="App">
         <DurationControls 
@@ -221,6 +221,7 @@ class App extends Component {
         <TimerCtrlPanel 
             timerCtrl={ this.startPauseTimer } 
             reset={ this.resetClockDefault }
+            paused={ paused }
         />
         <Beep />
       </div>

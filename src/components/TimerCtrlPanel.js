@@ -5,7 +5,7 @@ const TimerCtrlPanel = ({ timerCtrl, reset, paused }) => {
     return (
         <div>
              <button id='start_stop' onClick={ timerCtrl }>
-                <i className="material-icons">play_arrow</i>
+                {paused ? <i className="material-icons">play_arrow</i> : <i className="material-icons">pause</i> }
             </button>
             <button id='reset' onClick={ reset } >
                 <i className="material-icons">repeat</i>

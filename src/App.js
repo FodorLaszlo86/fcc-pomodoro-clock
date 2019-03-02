@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Timer from './components/Timer';
 import TimerCtrlPanel from './components/TimerCtrlPanel';
 import DurationControls from './components/DurationControls';
+import Beep from './components/Beep';
 import './App.css';
 
 class App extends Component {
@@ -52,6 +53,7 @@ class App extends Component {
     }
 
     else if (seconds === 0 && minutes === 0) {
+      this.playBeep();
       if (clockType === 'session') {
         this.setState({
           clockType: 'break',
@@ -173,7 +175,11 @@ class App extends Component {
   }
 
   resetClockDefault = () => {
+    const alarm = document.querySelector('#beep');
     clearInterval(this.state.intervalID);
+    alarm.pause();
+    alarm.currentTime = 0;
+
     this.setState({
       sessionLength: 25,
       breakLength: 5,
@@ -187,10 +193,16 @@ class App extends Component {
     })
   }
 
+  playBeep = () => {
+    const beepSound = document.querySelector('#beep');
+    console.log(beepSound);
+    beepSound.play();
+  }
+
 
   render() {
     const { minutes, seconds } = this.state.timeRemains
-    const { breakLength, sessionLength, paused, clockType } = this.state;
+    const { breakLength, sessionLength, clockType } = this.state;
     return (
       <div className="App">
         <DurationControls 
@@ -210,6 +222,7 @@ class App extends Component {
             timerCtrl={ this.startPauseTimer } 
             reset={ this.resetClockDefault }
         />
+        <Beep />
       </div>
     );
   }

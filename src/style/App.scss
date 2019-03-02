@@ -1,0 +1,41 @@
+
+#root {
+    height: 100%;
+    width: 100%
+}
+
+.App {
+    background-color: rgb(216, 216, 216);
+    width: 40rem;
+    height: 55rem;
+    margin-left: 50%;
+    transform: translate(-50%, 10%);
+    border: .3rem solid #e78d18;
+    border-radius: .4rem;
+    box-shadow: 0 .5rem 1.5rem #00000085;
+
+    header {
+
+        #title {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 400;
+            padding: 2rem 1rem;
+            font-size: 3.5rem;
+            background-image: linear-gradient(to right, #08490c,  #b86c08);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+    }
+
+    #footer {
+        text-align: center;
+        margin-top: 4rem;
+        color: #a76106;
+
+        span {
+            font-weight: bold;
+            color: #08490c;
+        }
+    }
+}

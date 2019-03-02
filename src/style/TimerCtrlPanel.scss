@@ -1,0 +1,53 @@
+#clock-controls {
+    display: flex;
+    justify-content: space-around;
+    padding:1.5rem 33%;
+
+
+    .clock-controls-btn {
+        border: none;
+        border-radius: 100rem;
+        background-color: #0b7911;
+        color: #fff;
+        padding: 1rem;
+        cursor: pointer;
+        transition: all .25s;
+        position: relative;
+
+        &::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            border-radius: 100rem;
+            position: absolute;
+            opacity: 1;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-color: #0b7911
+        }
+    }
+
+
+    .clock-controls-btn:hover {
+        background-color: #063f09;
+        transform: scale(1.05);
+
+        &::after {
+            opacity: 0;
+            transform: scaleX(1.8) scaleY(1.8);
+            transition: all .4s;
+        }
+    }
+
+    .clock-controls-btn:active {
+       transform: scale(.95);
+    }
+
+    .clock-controls-btn:focus {
+        outline: none;
+    }
+
+
+}

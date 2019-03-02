@@ -1,1 +1,29 @@
 /* Global setting and Variables */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow: auto;
+    height: 100vh;
+    width: 100vw;    
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Iceland', cursive;
+    font-size: 1.6rem;
+    box-sizing: inherit;
+    background-image: linear-gradient(to left,
+                                        rgba(0, 0, 0, 0.6),
+                                        rgba(0, 0, 0, 0.6)),
+                      url('../assets/pomodoro_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

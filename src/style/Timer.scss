@@ -1,0 +1,26 @@
+#timer-display {
+    border: .3rem solid #e78d18;
+    background-color: #0a6b0f;
+    color: #fff;
+    width: 20rem;
+    height: 20rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    #timer-label {
+        font-size: 3.25rem;
+        letter-spacing: .2rem;
+        text-transform: uppercase;
+    }
+
+    #time-left {
+        font-size: 3.5rem;
+        margin-top: 1rem;
+
+    }
+}

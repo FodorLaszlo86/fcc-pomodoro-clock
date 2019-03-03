@@ -38,6 +38,7 @@ class App extends Component {
   countDown = () => {
     const { minutes, seconds } = this.state.timeRemains;
     const { clockType } = this.state;
+    const timerDisp = document.getElementById('timer-display');
     if(seconds > 0) {
       this.setState({
         timeRemains: {
@@ -65,6 +66,7 @@ class App extends Component {
             minutes: this.state.breakLength
           }
         })
+        timerDisp.style.backgroundColor = '#d12a2a';
       } else {
         this.setState({
           clockType: 'session',
@@ -150,6 +152,7 @@ class App extends Component {
       if(event.target.id === 'session-increment' && this.state.sessionLength < 60) {
         this.setState({
           sessionLength: this.state.sessionLength + 1,
+          clockType: 'session'
         })
         this.adjustClockSession(event.target.id);
       }
@@ -157,6 +160,7 @@ class App extends Component {
       else if (event.target.id === 'break-increment' && this.state.breakLength < 60)
       this.setState({
         breakLength: this.state.breakLength + 1,
+        clockType: 'break'
       })
       this.adjustClockBreak(event.target.id);
     }
@@ -168,6 +172,7 @@ class App extends Component {
       if(event.target.id === 'session-decrement' && this.state.sessionLength > 1) {
         this.setState({
           sessionLength: this.state.sessionLength - 1,
+          clockType: 'session'
         })
         this.adjustClockSession(event.target.id);
       }
@@ -175,10 +180,7 @@ class App extends Component {
       else if (event.target.id === 'break-decrement' && this.state.breakLength > 1) {
         this.setState({
           breakLength: this.state.breakLength - 1,
-          timeRemains: {
-            minutes: this.state.sessionLength,
-            seconds: 0
-          }
+          clockType: 'break'
         })
         this.adjustClockBreak(event.target.id);
       }

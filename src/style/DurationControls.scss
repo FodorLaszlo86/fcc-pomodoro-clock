@@ -4,12 +4,22 @@
     flex-basis: 25%;
     margin: 2rem 0;
 
+    @media only screen and (max-width: 500px) {
+        flex-basis: 10rem;
+        margin-top: 10%;
+    }
+
     .set-timer {
         border: .3rem groove #777777;
         border-radius: .8rem;
         padding: .5rem 1rem;
         background-color: #0b7911de;
         color: rgb(228, 228, 228);
+
+        @media only screen and (max-width: 500px) {
+            padding: 2rem 1rem;
+    }
+
 
         #session-label,
         #break-label {

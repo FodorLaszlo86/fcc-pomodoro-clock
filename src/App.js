@@ -156,7 +156,7 @@ class App extends Component {
       // increase break duration, ensures time does not go under 1 minute
       else if (event.target.id === 'break-increment' && this.state.breakLength < 60)
       this.setState({
-        breakLength: this.state.breakLength + 1
+        breakLength: this.state.breakLength + 1,
       })
       this.adjustClockBreak(event.target.id);
     }
@@ -172,12 +172,17 @@ class App extends Component {
         this.adjustClockSession(event.target.id);
       }
       // decrease break duration, ensures time does not go under 1 minute
-      else if (event.target.id === 'break-decrement' && this.state.breakLength > 1)
-      this.setState({
-        breakLength: this.state.breakLength - 1
-      })
-      this.adjustClockBreak(event.target.id);
-    }
+      else if (event.target.id === 'break-decrement' && this.state.breakLength > 1) {
+        this.setState({
+          breakLength: this.state.breakLength - 1,
+          timeRemains: {
+            minutes: this.state.sessionLength,
+            seconds: 0
+          }
+        })
+        this.adjustClockBreak(event.target.id);
+      }
+    } 
   }
 
   resetClockDefault = () => {

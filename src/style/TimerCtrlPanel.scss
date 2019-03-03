@@ -5,10 +5,10 @@
 
 
     .clock-controls-btn {
-        border: .2rem solid #7a7a7a;
+        border: .2rem solid $col-gray-dark;
         border-radius: 100rem;
-        background-color: #0b7911;
-        color: #fff;
+        background-color: $appCol-secondary-light;
+        color: $col-white;
         padding: 1rem;
         cursor: pointer;
         transition: all .25s;
@@ -25,13 +25,13 @@
             top: 0;
             left: 0;
             z-index: -1;
-            background-color: #0b7911
+            background-color: $appCol-secondary-light;
         }
     }
 
 
     .clock-controls-btn:hover {
-        background-color: #063f09;
+        background-color: $appCol-secondary-darkest;
         transform: scale(1.05);
 
         &::after {

@@ -1,17 +1,14 @@
 #timer-display {
-    border: .4rem solid #e78d18;
-    background-color: #0a6b0f70;
-    color: #fff;
+    border: .4rem solid $appCol-ternary-light-1;
+    border-radius: 100rem;
+    background-color: $appCol-secondary-2;
+    color: $col-white;
     width: 20rem;
     height: 20rem;
-    margin-left: 50%;
     margin-top: 10%;
-    transform: translateX(-50%);
-    border-radius: 100rem;
-    display: flex;
+    @include centerElement;
+    @include centerFlex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     transition: all .4s;
 
     @media only screen and (max-width: 500px) {

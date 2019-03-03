@@ -11,10 +11,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: all .4s;
 
-    .timer-display-running {
-        background-color: #0a6b0f;
-    }
 
     #timer-label {
         font-size: 3.25rem;

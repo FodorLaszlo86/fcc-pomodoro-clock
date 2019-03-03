@@ -90,16 +90,19 @@ class App extends Component {
 
   // start-stop timer countDown
   startPauseTimer = () => {
+    const timerDisplay = document.getElementById('timer-display');
     if(this.state.paused) {
       this.setState({
         paused: false
       })
       this.tickTock()
+      timerDisplay.style.backgroundColor = '#0a6b0f';
     } else {
       this.setState({
         paused: true
       })
-      clearInterval(this.state.intervalID)
+      clearInterval(this.state.intervalID);
+      timerDisplay.style.backgroundColor = '#0a6b0f70';
     }
   }
 

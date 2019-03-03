@@ -38,7 +38,7 @@ class App extends Component {
   countDown = () => {
     const { minutes, seconds } = this.state.timeRemains;
     const { clockType } = this.state;
-    const timerDisp = document.getElementById('timer-display');
+    const timerDisplay = document.getElementById('timer-display');
     if(seconds > 0) {
       this.setState({
         timeRemains: {
@@ -66,7 +66,7 @@ class App extends Component {
             minutes: this.state.breakLength
           }
         })
-        timerDisp.style.backgroundColor = '#d12a2a';
+        timerDisplay.style.backgroundColor = '#d12a2a';
       } else {
         this.setState({
           clockType: 'session',
@@ -75,6 +75,7 @@ class App extends Component {
             minutes: this.state.sessionLength
           }
         })
+        timerDisplay.style.backgroundColor = '#08490c'
       }
     }
   }

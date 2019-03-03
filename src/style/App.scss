@@ -1,9 +1,7 @@
 
 #root {
     height: 100%;
-    width: 100%
-
-    
+    width: 100%;    
 }
 
 .App {
@@ -52,6 +50,8 @@
         bottom: 5vh;
         left: 50%;
         transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
 
 
         span {

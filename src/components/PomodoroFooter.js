@@ -2,7 +2,7 @@ import React from 'react';
 
 const PomodoroFooter = () => {
     return (
-        <footer id='footer'>Coded by <span>Laszlo Fodor</span></footer>
+        <footer id='footer'>Code and Design by <span>Laszlo Fodor</span></footer>
     )
 }
 

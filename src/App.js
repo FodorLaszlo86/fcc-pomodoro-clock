@@ -226,7 +226,6 @@ class App extends Component {
             incrementTime={ this.incrementTime } 
             decrementTime={ this.decrementTime }
         />
-
         <Timer 
             minutes={ minutes } 
             seconds={ seconds } 

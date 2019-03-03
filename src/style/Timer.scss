@@ -1,6 +1,6 @@
 #timer-display {
-    border: .3rem solid #e78d18;
-    background-color: #0a6b0f;
+    border: .4rem solid #e78d18;
+    background-color: #0a6b0f70;
     color: #fff;
     width: 20rem;
     height: 20rem;
@@ -11,6 +11,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .timer-display-running {
+        background-color: #0a6b0f;
+    }
 
     #timer-label {
         font-size: 3.25rem;

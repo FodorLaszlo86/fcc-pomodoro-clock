@@ -95,9 +95,9 @@ class App extends Component {
     const timerClockBody = document.getElementById('timer-display');
     
     if(this.state.clockType === 'session') {
-      timerClockBody.classList = 'timer-display-session-active';
+      timerClockBody.style.backgroundColor = '#08490c';
     } else {
-      timerClockBody.classList = 'timer-display-break-active';
+      timerClockBody.style.backgroundColor = 'red';
     }
   }
 
@@ -218,6 +218,8 @@ class App extends Component {
       paused: true,
       intervalID: null
     })
+    // set timer display background-color back to the original pale green
+    document.getElementById('timer-display').style.backgroundColor = '#0a6b0f70';
   }
 
   playBeep = () => {

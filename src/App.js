@@ -91,21 +91,31 @@ class App extends Component {
   }
 
 
+  handleTimerBackground = () => {
+    const timerClockBody = document.getElementById('timer-display');
+    
+    if(this.state.clockType === 'session') {
+      timerClockBody.classList = 'timer-display-session-active';
+    } else {
+      timerClockBody.classList = 'timer-display-break-active';
+    }
+  }
+
+
   // start-stop timer countDown
   startPauseTimer = () => {
-    const timerDisplay = document.getElementById('timer-display');
     if(this.state.paused) {
       this.setState({
         paused: false
       })
       this.tickTock()
-      timerDisplay.style.backgroundColor = '#0a6b0f';
+      this.handleTimerBackground();
     } else {
       this.setState({
         paused: true
       })
       clearInterval(this.state.intervalID);
-      timerDisplay.style.backgroundColor = '#0a6b0f70';
+      this.handleTimerBackground()
     }
   }
 
@@ -238,6 +248,7 @@ class App extends Component {
         <TimerCtrlPanel 
             timerCtrl={ this.startPauseTimer } 
             reset={ this.resetClockDefault }
+            setBackGround={ this.handleTimerBackground }
             paused={ paused }
         />
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const TimerCtrlPanel = ({ timerCtrl, reset, paused }) => {
+const TimerCtrlPanel = ({ timerCtrl, reset, paused, setBackGround }) => {
     
     return (
         <div id='clock-controls'>

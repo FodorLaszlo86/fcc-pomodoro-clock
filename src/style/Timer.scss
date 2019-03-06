@@ -1,7 +1,6 @@
 #timer-display {
     border: .4rem solid $appCol-ternary-light-1;
     border-radius: 100rem;
-    background-color: $appCol-secondary-2;
     color: $col-white;
     width: 20rem;
     height: 20rem;
@@ -39,4 +38,21 @@
         }
 
     }
+}
+
+.timer-display-session-paused {
+    background-color: $appCol-secondary-2;
+}
+
+.timer-display-session-active {
+    background-color: $appCol-secondary;
+}
+
+.timer-display-break-paused {
+    background-color: blue;
+}
+
+
+.timer-display-break-active {
+    background-color: red;
 }

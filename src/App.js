@@ -97,7 +97,7 @@ class App extends Component {
     if(this.state.clockType === 'session') {
       timerClockBody.style.backgroundColor = '#08490c';
     } else {
-      timerClockBody.style.backgroundColor = 'red';
+      timerClockBody.style.backgroundColor = '#d12a2a';
     }
   }
 

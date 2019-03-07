@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/fcc-pomodoro-clock/static/css/main.acaabea2.chunk.css"
   },
   {
-    "revision": "ee5cfa14694efbcd6bedfb66c5a38a32",
+    "revision": "85418fc3dcd4f2ed85038c1ccdc6aeed",
     "url": "/fcc-pomodoro-clock/index.html"
   }
 ];

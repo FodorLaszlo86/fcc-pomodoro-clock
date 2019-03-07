@@ -8,19 +8,19 @@ self.__precacheManifest = [
     "url": "/fcc-pomodoro-clock/static/js/runtime~main.861edab1.js"
   },
   {
-    "revision": "5f51cd6e9157ed2312ed",
-    "url": "/fcc-pomodoro-clock/static/js/main.5f51cd6e.chunk.js"
+    "revision": "993f76b876a408096e86",
+    "url": "/fcc-pomodoro-clock/static/js/main.993f76b8.chunk.js"
   },
   {
     "revision": "c88c70e5f4ff8bea6fac",
     "url": "/fcc-pomodoro-clock/static/js/2.c88c70e5.chunk.js"
   },
   {
-    "revision": "5f51cd6e9157ed2312ed",
-    "url": "/fcc-pomodoro-clock/static/css/main.94241496.chunk.css"
+    "revision": "993f76b876a408096e86",
+    "url": "/fcc-pomodoro-clock/static/css/main.acaabea2.chunk.css"
   },
   {
-    "revision": "d7a9a0265ed2f434e5ff3523df162793",
+    "revision": "ee5cfa14694efbcd6bedfb66c5a38a32",
     "url": "/fcc-pomodoro-clock/index.html"
   }
 ];
